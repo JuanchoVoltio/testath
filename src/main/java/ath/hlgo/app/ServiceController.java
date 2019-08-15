@@ -8,18 +8,13 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
-import org.springframework.validation.annotation.Validated;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @Api(value = "User Admin Services")
@@ -38,7 +33,7 @@ public class ServiceController {
             @ApiResponse(code = 500, message = "Internal Server Error",  response = String.class)
     } )
     @GetMapping("/response-entity-builder-with-http-headers")
-    public ResponseEntity<String> getSubscriber(@ApiParam(required = true, value = "User's id. Must be bigger than 0")
+    public ResponseEntity<String> searchUser(@ApiParam(required = true, value = "User's id. Must be bigger than 0")
                                                  @RequestParam String userId){
 
         ResponseEntity<String> result;
