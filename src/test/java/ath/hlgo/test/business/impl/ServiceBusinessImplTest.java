@@ -1,11 +1,13 @@
 package ath.hlgo.test.business.impl;
 
+import ath.hlgo.data.DataLayerException;
 import ath.hlgo.utils.Constants;
 import ath.hlgo.data.Dao;
 import ath.hlgo.model.User;
 import ath.hlgo.test.app.Application;
 import ath.hlgo.business.ServiceBusinessImpl;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +37,7 @@ public class ServiceBusinessImplTest {
 
     @Before
     public void setUp() throws Exception {
-        testUser = new User(0, "Juancho", "Voltio");
+        testUser = new User(0, "Richie", "Sambora");
     }
 
     @After
@@ -67,5 +69,19 @@ public class ServiceBusinessImplTest {
 
         //THEN
         assertTrue(Constants.getErrorMessage(userFound.getId()).equals(Constants.NOT_VALID_ID_MSG));
+    }
+
+
+    @Test
+    public void should_return_error_when_exception_is_thrown() throws DataLayerException {
+        //GIVEN
+        String result;
+        Mockito.when(dao.create(Mockito.any(User.class))).thenThrow(new DataLayerException("Error", new Exception()));
+
+        //WHEN
+        result = testSubject.performCreateUser(testUser);
+
+        //THEN
+        Assert.assertEquals(Constants.ERROR_MSG, result);
     }
 }

@@ -34,6 +34,24 @@ public class UsersDao implements Dao<User> {
     }
 
     @Override
+    public String create(User u) throws DataLayerException {
+        String result;
+        try(
+                Connection conn = dataSource.getConnection();
+                PreparedStatement selectStatement = conn.prepareStatement(Constants.INSERT_SQL)
+        ){
+            selectStatement.setString(1, u.getFirstName());
+            selectStatement.setString(2, u.getLastName());
+            result = (selectStatement.executeUpdate() != 0) ? Constants.OK_MSG : Constants.ERROR_MSG;
+            conn.commit();
+        } catch (SQLException ex) {
+            throw new DataLayerException(Constants.ERROR_MSG + " " + ex.getMessage(), ex);
+        }
+
+        return result;
+    }
+
+    @Override
     public void toDTO(ResultSet resultSet, User dto) throws SQLException {
         if(resultSet.next()) {
             dto.setFirstName(resultSet.getString("first_name"));

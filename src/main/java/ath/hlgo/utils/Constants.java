@@ -6,6 +6,9 @@ public class Constants {
     public static final int NOT_VALID_ID = -2;
     public static final String NOT_FOUND_MSG = "User not found";
     public static final String NOT_VALID_ID_MSG = "Not valid id, must be a number bigger than 0";
+    public static final String INSERT_SQL = "INSERT INTO app_users (first_name, last_name) VALUES (?, ?)";
+    public static final String OK_MSG = "OK";
+    public static final String ERROR_MSG = "Ooops....";
 
     public static String getErrorMessage(int id) {
 

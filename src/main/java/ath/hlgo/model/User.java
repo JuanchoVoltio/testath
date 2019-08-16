@@ -1,14 +1,14 @@
 package ath.hlgo.model;
 
 import org.json.JSONObject;
-import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class User {
 
-    @NotEmpty(groups = Existing.class, message = "Id required.")
-    private int id;
+    @NotNull(groups = Existing.class, message = "Id required.")
+    private Integer id;
     @NotEmpty(groups = Existing.class, message = "First Name required.")
     private String firstName;
     @NotEmpty(groups = Existing.class, message = "Last Name required.")
@@ -20,11 +20,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User(int id) {
+    public User(Integer id) {
         this.id = id;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
