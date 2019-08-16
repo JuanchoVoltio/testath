@@ -59,10 +59,6 @@
                 <configuration>
                     <systemPropertyVariables>
                         <DB_URL>jdbc:h2:~/test</DB_URL>
-                        <PCRF_OCSG_USERNAME>userNameBla</PCRF_OCSG_USERNAME>
-                        <PCRF_OCSG_PASSWORD>passwordBla</PCRF_OCSG_PASSWORD>
-                        <DB_LOGGER_URL>http://https://prov-logger-db-manage-claro-apps.osen01-apps.claro.amx/logger-db/v1/</DB_LOGGER_URL>
-                        <SWAGGER_ENABLED>0</SWAGGER_ENABLED>
                         <buildDirectory>${project.build.directory}</buildDirectory>
                     </systemPropertyVariables>
                 </configuration>
